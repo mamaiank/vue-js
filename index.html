@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.JS Tutorial</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="vue-app">
+      <input type="text" name="" v-model="name" />
+      <br />
+      <input type="checkbox" name="" v-model="pets" value="แมว" />
+      <label for="">แมว</label>
+      <input type="checkbox" name="" v-model="pets" value="ปลา" />
+      <label for="">ปลา</label>
+      <input type="checkbox" name="" v-model="pets" value="สุนัข" />
+      <label for="">สุนัข</label>
+      <br />
+      <input type="radio" v-model="gender" value="Male" />
+      <label for="">Male</label>
+      <input type="radio" v-model="gender" value="FeMale" />
+      <label for="">FeMale</label>
+      <br />
+      <select name="" v-model="job">
+        <option value="PG">PG</option>
+        <option value="Merchant">Merchant</option>
+        <option value="Student">Student</option>
+      </select>
+      <h1>{{name}}</h1>
+      <p>{{age}}</p>
+      <p>{{job}}</p>
+      <p>{{message}}</p>
+      <p>{{pets}}</p>
+      <p>{{gender}}</p>
+      <p>{{getName()}}</p>
+      <!-- <p>{{setName('a')}}</p> -->
+      <!-- <a :href="website">{{website}}</a> -->
+      <a v-bind:href="website">{{website}}</a>
+      <input
+        type="text"
+        name=""
+        v-bind:value="name"
+        v-on:keydown="setName($event.target.value)"
+      />
+      <button type="button" name="button-add" v-on:click="addAge()">Add</button>
+      <button type="button" name="button-Subtract" v-on:click="subtractAge()">
+        Subtract
+      </button>
+      <button type="button" v-on:click="like=!like">Link</button>
+      <p v-if="like">You Like!</p>
+      <p>{{products[0]}}</p>
+      <p>{{products_obj[0].name}}</p>
+      <ul>
+        <li v-for="res in products">{{res}}</li>
+        <li v-for="res in products_obj">{{res.name}}</li>
+      </ul>
+      <div
+        style="border-bottom: 1px solid #000000; width: 100%; height: 1px;"
+      ></div>
+      <input type="text" name="" v-model="new_data.name_data" />
+      <input type="text" name="" v-model="new_data.salary" />
+      <button type="button" @click="addEmp()">add</button>
+      <ul>
+        <li v-for="res in emp_group">{{res.emp_name}} | {{res.salary}}</li>
+      </ul>
+      <p>เงินเดือนรวม: {{summation_salary}}</p>
+    </div>
+    <div
+      style="border-bottom: 1px solid #000000; width: 100%; height: 1px;"
+    ></div>
+    <div id="post-app">
+      <p>หัวข้อ: {{title}}</p>
+      <p>ข้อความ: {{message}}</p>
+    </div>
+    <div id="comment-app">
+      <textarea name="" id="" cols="30" rows="10" v-model="text">
+{{text}}</textarea
+      >
+    </div>
+    <div id="like-system-app">
+      <button type="button" v-on:click="clickLike">like ({{like}})</button>
+    </div>
+    <div
+      style="border-bottom: 1px solid #000000; width: 100%; height: 1px;"
+    ></div>
+    <div id="test-component-app">
+      <post title="Test Component" subtitle="sub"></post>
+      <showview
+        title="Test Component"
+        subtitle="Validate"
+        :view="100"
+      ></showview>
+      <showview title="Test Component" subtitle="default"></showview>
+      <showview title="Test Component" subtitle="required"></showview>
+      <nk></nk>
+      <nk></nk>
+    </div>
+    <div
+      style="border-bottom: 1px solid #000000; width: 100%; height: 1px;"
+    ></div>
+    <div id="dataComponent">
+      <ul>
+        <template v-for="res in comments">
+          <showcomment :comment="res"></showcomment>
+        </template>
+        <showcomment v-for="res in comments" :key="res" :comment="res"></showcomment>
+      </ul>
+      <input type="text" v-model="newComment" v-on:keyup.enter="addComment" />
+    </div>
+    <div
+      style="border-bottom: 1px solid #000000; width: 100%; height: 1px;"
+    ></div>
+    <div id="testslot">
+      <food-app>
+          <p>ข้าวผัด</p>
+      </food-app>
+      <food-app></food-app>
+    </div>
+    <template id="foodarea">
+      <div id="slot1">
+        <h1>เมนูอาหาร</h1>
+        <slot></slot>
+        <h2>อาหารเมืองไทย</h2>
+      </div>
+    </template>
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>
